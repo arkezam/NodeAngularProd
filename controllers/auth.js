@@ -38,6 +38,7 @@ const crearUsuario = async (req, res)=>{
     return res.status(201).json({
         ok:true,
         uid: dbUser.id,
+        email: dbUser.email,
         name,
         token
     })
@@ -79,6 +80,7 @@ const loginUsuario = async (req, res)=>{
         res.json({
             ok:true,
             uid: dbUser.id,
+            email: dbUser.email,
             name:dbUser.name,
             token
         })
@@ -96,13 +98,17 @@ const loginUsuario = async (req, res)=>{
 // revalidar token
 const renew = async (req, res)=>{
 
-    const {uid, name} = req;
-    const token = await generarJWT(uid, name)
+    const {uid} = req;
+
+    const dbUSer =  await Usuario.findById(uid);
+
+    const token = await generarJWT(uid )
     return res.json({
-        ok:"true",
+        ok:"true", 
         uid,
-        name,
-        token
+        name:dbUSer.name,
+        token,
+        email:dbUSer.email
     })
 }
 

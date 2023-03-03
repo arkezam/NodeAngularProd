@@ -1,9 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const { dbConection } = require('./db/config');
+const path = require('path')
 require('dotenv').config();
 const app = express();
-
 // directorio publico
 app.use(express.static('public'))
 
@@ -21,6 +21,9 @@ dbConection();
 app.use( '/api/auth', require('./routes/auth') )
 
 
+app.get('*', (req, res)=>{
+   res.sendFile(path.resolve(__dirname,'public/index.html')); 
+ })
 
 PORT = process.env.PORT
 app.listen(PORT, m =>{
