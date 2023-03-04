@@ -91,7 +91,7 @@ const loginUsuario = async (req, res)=>{
     return res.status(500).json({
         ok:"false",
         msg: "hable con el administrador",
-        error:error
+        error: error
     })
     }
     
