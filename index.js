@@ -16,16 +16,7 @@ app.use(cors())
 app.use(express.json());
 
 // base de datos
-const connectToMongo = async() => {
-  await mongoose.connect(process.env.MONGO_CONNECT, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-  });
-  return mongoose;
-};
-
-await connectToMongo().then(async() => console.log('connected yeee'));
+dbConection();
 
 
 app.get('/ip',function(req, res) {
