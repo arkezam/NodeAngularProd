@@ -3,6 +3,7 @@ const cors = require('cors');
 const { dbConection } = require('./db/config');
 const path = require('path')
 require('dotenv').config();
+const mongoose = require("mongoose");
 const app = express();
 // directorio publico
 app.use(express.static('public'))
