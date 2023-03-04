@@ -15,7 +15,13 @@ app.use(cors())
 app.use(express.json());
 
 // base de datos
-dbConection();
+mongoose.connect(
+  process.env.MONGO_CONNECT,
+  { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true },
+  () => {
+    console.log('Connected to MongoDB');
+  }
+);
 
 //Rutas
 app.use( '/api/auth', require('./routes/auth') )
