@@ -49,7 +49,7 @@ const crearUsuario = async (req, res)=>{
         return res.status(500).json({
             ok:"false",
             msg: "Por favor comuniquese con el administrador",
-            error
+            error: error
         })
     }
 }
