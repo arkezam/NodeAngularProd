@@ -88,9 +88,10 @@ const loginUsuario = async (req, res)=>{
 
     } catch (error) {
     console.log(error);
-    return res.json({
+    return res.status(500).json({
         ok:"false",
-        msg: "hable con el administrador"
+        msg: "hable con el administrador",
+        error:error
     })
     }
     

@@ -23,7 +23,10 @@ mongoose.connect(
     console.log('Connected to MongoDB');
   }
 );
-
+app.get('/ip',function(req, res) {
+  const ipAddress = req.socket.remoteAddress;
+  res.send(ipAddress);
+});
 //Rutas
 app.use( '/api/auth', require('./routes/auth') )
 
@@ -32,10 +35,7 @@ app.get('*', (req, res)=>{
    res.sendFile(path.resolve(__dirname,'public/index.html')); 
  })
 
- app.get('/ip',function(req, res) {
-  const ipAddress = req.socket.remoteAddress;
-  res.send(ipAddress);
-});
+
 
 PORT = process.env.PORT
 app.listen(PORT, m =>{
